@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState , useEffect} from 'react';
+import React, { useContext, useRef, useState} from 'react';
 import { data } from '../../assets/data/dummydata';
 import { Context } from '../../Context/Language';
 import Input from './Input';
@@ -61,18 +61,7 @@ const Form = () => {
         setErrors(validation);
         setDisabledBtn(!validInputs());
     };
-
-    useEffect(() => {
-        const newErrors = {};
-        for (const error of Object.keys(errors)) {
-            const errorMessages = getErrorMessages(error);
-            if (errorMessages && errorMessages.length > 0) {
-                newErrors[error] = errorMessages[0].error;
-            }
-        }
-        setErrors(newErrors);
-    }, [lang]);
-
+    
     const resetForm = () => {
         setFormData({
             user_name: "",
