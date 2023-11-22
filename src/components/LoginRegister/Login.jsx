@@ -14,11 +14,6 @@ const Login = () => {
     })
     const [errors, setErrors] = useState({});
 
-    const getErrorMessages = (error) => {
-        return data[lang].loginPage.inputs.find(input => input.name === error).errors;
-    }
-
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUser({
@@ -64,17 +59,6 @@ const Login = () => {
         }
         
     };
-
-    useEffect(() => {
-        const newErrors = {};
-        for (const error of Object.keys(errors)) {
-            const errorMessages = getErrorMessages(error);
-            if (errorMessages && errorMessages.length > 0) {
-                newErrors[error] = errorMessages[0].error;
-            }
-        }
-        setErrors(newErrors);
-    }, [lang]);
 
     return (
         <div className="wrapper">
